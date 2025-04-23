@@ -21,7 +21,7 @@
   "paths": {
     "/plants": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "description": "Returns all cats from the system that the user has access to",
         "parameters": [
           {
             "name": "limit",
@@ -97,6 +97,44 @@
       }
     },
     "/plants/{id}": {
+        "get": {
+        "description": "Returns the name of the plant based on the ID supplied.",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "description": "Plant name",
+            "schema": {
+              "type": "string",
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Plant name response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Plant"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "description": "Deletes a single plant based on the ID supplied",
         "parameters": [
