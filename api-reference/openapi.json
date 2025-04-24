@@ -21,7 +21,7 @@
   "paths": {
     "/plants": {
       "get": {
-        "description": "Returns all cats from the system that the user has access to",
+        "description": "Returns all plants from the system that the user has access to",
         "parameters": [
           {
             "name": "limit",
@@ -101,9 +101,10 @@
         "description": "Returns the name of a single plant based on the ID supplied.",
         "parameters": [
           {
-            "name": "ID",
+            "name": "id",
             "in": "path",
             "description": "Plant name",
+            "required": true,
             "schema": {
               "type": "string",
             }
