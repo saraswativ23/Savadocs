@@ -1,8 +1,8 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "Classroom Manager API",
+    "description": "A mock API that allows a teacher to manage information about students in their classes.",
     "license": {
       "name": "MIT"
     },
@@ -19,9 +19,9 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/students": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "description": "Returns all students from the system that the user has access to.",
         "parameters": [
           {
             "name": "limit",
@@ -35,13 +35,13 @@
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "Student response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Plant"
+                    "$ref": "#/components/schemas/Student"
                   }
                 }
               }
@@ -60,13 +60,13 @@
         }
       },
       "post": {
-        "description": "Creates a new plant in the store",
+        "description": "Creates a new student in the classroom.",
         "requestBody": {
-          "description": "Plant to add to the store",
+          "description": "Student to add to the classroom.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/NewStudent"
               }
             }
           },
@@ -74,11 +74,11 @@
         },
         "responses": {
           "200": {
-            "description": "plant response",
+            "description": "Student response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                  "$ref": "#/components/schemas/Student"
                 }
               }
             }
@@ -96,27 +96,27 @@
         }
       }
     },
-    "/plants/{id}": {
+    "/students/{id}": {
       "get": {
-        "description": "Returns the name of a single plant based on the ID supplied.",
+        "description": "Returns information on a single student based on the ID supplied.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "Plant name",
+            "description": "Student ID",
             "required": true,
             "schema": {
-              "type": "string",
+              "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Plant name response",
+            "description": "Student information response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
+                  "type": "string"
                 }
               }
             }
@@ -134,12 +134,12 @@
         }
       },
       "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+        "description": "Deletes a single student based on the ID supplied",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of plant to delete",
+            "description": "ID of student to delete",
             "required": true,
             "schema": {
               "type": "integer",
@@ -149,7 +149,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Plant deleted",
+            "description": "Student deleted",
             "content": {}
           },
           "400": {
@@ -168,26 +168,52 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
+      "Student": {
         "required": [
-          "name"
+          "firstName",
+          "lastName",
+          "gradeLevel",
+          "GPA",
+          "attendanceStatus"
         ],
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
+          "firstName": {
+            "description": "The first name of the student",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
           },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
+          "lastName": {
+            "description": "The last name of the student",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "GPA": {
+            "description": "Student's average grade in the class on a 4.0 scale. Two decimal points allowed.",
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "maximum": 4.00
+          },
+          "gradeLevel": {
+            "description": "Student's grade level (from 1st to 12th grade), expressed as an integer between 1 and 12",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12
+          },
+          "attendanceStatus": {
+            "description": "Used to indicate if the student is present, late, or absent to class that day",
+            "type": "string",
+            "enum": ["present", "late", "absent"]
           }
         }
       },
-      "NewPlant": {
+      "NewStudent": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/Plant"
+            "$ref": "#/components/schemas/Student"
           },
           {
             "required": [
@@ -196,9 +222,11 @@
             "type": "object",
             "properties": {
               "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
+                "description": "Identification number of the student written as a 5-digit number. The first 3 digits indicate the student's class. The last 2 digits indicate the student's number within the class.",
+                "type": "string",
+                "format": "([0-9]+)",
+                "maxLength": 5,
+                "minLength": 5
               }
             }
           }
