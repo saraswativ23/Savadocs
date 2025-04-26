@@ -21,15 +21,18 @@
   "paths": {
     "/students": {
       "get": {
-        "description": "Returns all students from the system that the user has access to.",
+        "description": "Returns all students registered in the system.",
         "parameters": [
           {
-            "name": "limit",
+            "name": "gradeLevel",
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "Specify a grade level to retrieve a list of all students in that grade.",
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int32",
+              "minimum": 1,
+              "maximum": 12,
+            "example": 3
             }
           }
         ],
@@ -106,7 +109,8 @@
             "description": "Student ID",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": 12345
             }
           }
         ],
@@ -143,7 +147,8 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "example": 12345
             }
           }
         ],
@@ -182,31 +187,36 @@
             "description": "The first name of the student",
             "type": "string",
             "minLength": 1,
-            "maxLength": 60
+            "maxLength": 60,
+            "example": "John"
           },
           "lastName": {
             "description": "The last name of the student",
             "type": "string",
             "minLength": 1,
-            "maxLength": 60
+            "maxLength": 60,
+            "example": "Smith"
           },
           "GPA": {
             "description": "Student's average grade in the class on a 4.0 scale. Two decimal points allowed.",
             "type": "number",
             "format": "double",
             "minimum": 0,
-            "maximum": 4.00
+            "maximum": 4.00,
+            "example": 3.95
           },
           "gradeLevel": {
             "description": "Student's grade level (from 1st to 12th grade), expressed as an integer between 1 and 12",
             "type": "integer",
             "minimum": 1,
-            "maximum": 12
+            "maximum": 12,
+            "example": 1
           },
           "attendanceStatus": {
             "description": "Used to indicate if the student is present, late, or absent to class that day",
             "type": "string",
-            "enum": ["present", "late", "absent"]
+            "enum": ["present", "late", "absent"],
+            "example": "present"
           }
         }
       },

@@ -38,7 +38,7 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Classroom Manager API",
             "pages": [
               "api-reference/introduction"
             ]
