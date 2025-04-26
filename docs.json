@@ -2,10 +2,6 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "maple",
   "name": "Mint Classroom Manager",
-  "colors": {
-    "primary": "#16A34A",
-    "light": "#f190d5",
-    "dark": "#f190d5"
   },
   "favicon": "/favicon.svg",
   "navigation": {
