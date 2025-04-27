@@ -232,13 +232,12 @@
             "type": "object",
             "properties": {
               "id": {
-                "description": "Identification number of the student written as a 5-digit number. The first 2 digits indicate the student's grade level. The last 3 digits indicate the student's number within the class.",
+                "description": "Identification number of the student written as a 5-digit number. The first 2 digits indicate the student's grade level. The last 3 digits indicate the student's number within the grade. The system supports up to 999 students in each grade level. Example: '01234', where the student is the 234th student in 1st grade.",
                 "type": "string",
                 "format": "([0-9]+)",
                 "maxLength": 5,
                 "minLength": 5,
                 "example": "01234", 
-                "description": "where the student is the 234th student in 1st grade."
               }
             }
           }
