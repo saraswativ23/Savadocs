@@ -46,6 +46,7 @@
                     {            
                         "group": "Students Endpoint",
                         "pages": [
+                            "api-reference/endoint/StudentsEndpoint",
                             "api-reference/endpoint/getAllStudents",
                             "api-reference/endpoint/createStudent",
                             "api-reference/endpoint/deleteStudent",
