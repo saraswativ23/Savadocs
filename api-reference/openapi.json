@@ -101,16 +101,19 @@
     },
     "/students/{id}": {
       "get": {
-        "description": "Returns information on a single student based on the ID supplied.",
+        "description": "Returns information on a single student based on the student ID supplied.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "Student ID",
+            "description": "5-digit student ID of the student you wish to retrieve.",
             "required": true,
             "schema": {
               "type": "string",
-              "example": 12345
+              "format": "([0-9]+)",
+              "minLength": 1,
+              "maxLength": 5,
+              "example": "01234"
             }
           }
         ],
@@ -143,12 +146,14 @@
           {
             "name": "id",
             "in": "path",
-            "description": "ID of student to delete",
+            "description": "5-digit student ID of the student you wish to delete.",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64",
-              "example": 12345
+              "type": "string",
+              "format": "([0-9]+)",
+              "minLength": 5
+              "maxLength": 5
+              "example": "01234"
             }
           }
         ],
