@@ -44,12 +44,13 @@
             ]
           },
           {
-            "group": "Endpoints",
-            "pages": [
+            "groups": "Endpoints"[
+              "group": "Student",
+              "pages": [
               "api-reference/endpoint/getAllStudents",
               "api-reference/endpoint/createStudent",
               "api-reference/endpoint/deleteStudent",
-              "api-reference/endpoint/getStudent"
+              "api-reference/endpoint/getStudent"]
             ]
           }
         ]
