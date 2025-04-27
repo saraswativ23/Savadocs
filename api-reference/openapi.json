@@ -116,7 +116,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Student information response",
+            "description": "Student information response.",
             "content": {
               "application/json": {
                 "schema": {
@@ -138,7 +138,7 @@
         }
       },
       "delete": {
-        "description": "Deletes a single student based on the ID supplied",
+        "description": "Deletes a single student from the system based on the ID supplied.",
         "parameters": [
           {
             "name": "id",
@@ -184,14 +184,14 @@
         "type": "object",
         "properties": {
           "firstName": {
-            "description": "The first name of the student",
+            "description": "The first name of the student.",
             "type": "string",
             "minLength": 1,
             "maxLength": 60,
             "example": "John"
           },
           "lastName": {
-            "description": "The last name of the student",
+            "description": "The last name of the student.",
             "type": "string",
             "minLength": 1,
             "maxLength": 60,
@@ -206,14 +206,14 @@
             "example": 3.95
           },
           "gradeLevel": {
-            "description": "Student's grade level (from 1st to 12th grade), expressed as an integer between 1 and 12",
+            "description": "Student's grade level (from 1st to 12th grade), expressed as an integer between 1 and 12.",
             "type": "integer",
             "minimum": 1,
             "maximum": 12,
             "example": 1
           },
           "attendanceStatus": {
-            "description": "Used to indicate if the student is present, late, or absent to class that day",
+            "description": "Used to indicate if the student is present, late, or absent to class that day.",
             "type": "string",
             "enum": ["present", "late", "absent"],
             "example": "present"
@@ -236,7 +236,8 @@
                 "type": "string",
                 "format": "([0-9]+)",
                 "maxLength": 5,
-                "minLength": 5
+                "minLength": 5,
+                "example": "12345", "description": "where the student is the 45th student in 1st grade class 23."
               }
             }
           }
