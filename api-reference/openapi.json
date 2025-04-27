@@ -111,7 +111,7 @@
             "schema": {
               "type": "string",
               "format": "([0-9]+)",
-              "minLength": 1,
+              "minLength": 5,
               "maxLength": 5,
               "example": "01234"
             }
